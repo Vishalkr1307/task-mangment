@@ -1,0 +1,20 @@
+<%- include('head')%>
+<body>
+    <%- include('navbar')%>
+    <main>
+        <% if (tasks.length > 0) { %>
+            <ul class="showdata">
+                <% tasks.forEach((task) => { %>
+                    <div class="showitem">
+
+                        <li><%= task.title %></li>
+                        <li><%= task.description %></li>
+                        <li><%= task.price %></li>
+                    </div>
+                <% }); %>
+            </ul>
+        <% } else { %>
+            <p>No tasks found.</p>
+        <% } %>
+    </main>
+</body>

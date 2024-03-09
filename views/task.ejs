@@ -23,3 +23,38 @@
         </form>
     </main>
 </body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.7/axios.min.js" integrity="sha512-NQfB/bDaB8kaSXF8E77JjhHG5PM6XVRxvHzkZiwl3ddWCEPBa23T76MuWSwAJdMGJnmQqM0VeY9kFszsrBEFrQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+    const url='http://localhost:2345'
+    const formData=document.querySelector("form")
+    formData.addEventListener("submit",handleForm)
+    var p1=document.createElement("p");
+    function handleForm(e){
+        e.preventDefault();
+        let data={
+
+             title:formData.elements[0].value,
+             description:formData.elements[1].value,
+             price:formData.elements[2].value
+        }
+        axios.post(`${url}/task/addTask`,data).then((res)=>{
+          
+            if(res.data){
+                p1.textContent="Data added successfully"
+                p1.style.color="green"
+                p1.style.fontWeight="bold"
+                formData.parentNode.insertBefore(p1, formData.previousSibling)
+            }
+
+        }).catch((err)=>{
+                p1.textContent="Data added not successfully"
+                p1.style.color="red"
+                p1.style.fontWeight="bold"
+                formData.parentNode.insertBefore(p1, formData.previousSibling)
+
+        })
+       
+
+
+    }
+</script>

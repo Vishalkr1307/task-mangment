@@ -7,6 +7,6 @@ router.post("/addTask",postTask)
 router.get("/getTask",getTask)
 router.get("/getTask/:id",singleTask)
 router.put("/updateTask/:id",updateTask)
-router.delete("/delete/Task/:id",updateTask)
+router.delete("/deleteTask/:id",deleteTask)
 
 module.exports=router

@@ -41,7 +41,9 @@ const singleTask=async (req,res)=>{
 }
 const deleteTask=async (req,res)=>{
     try{
+        
         const task=await Task.findByPk(req.params.id)
+        
         if(!task){
             return res.status(404).send("Task not found")
         }
@@ -50,6 +52,7 @@ const deleteTask=async (req,res)=>{
 
     }
     catch (err) {
+        
         return res.status(500).send("Bad Request")
     }
 }

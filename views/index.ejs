@@ -10,6 +10,8 @@
                         <li><%= task.title %></li>
                         <li><%= task.description %></li>
                         <li><%= task.price %></li>
+                        <button onclick="handleDelete('<%=task.id%>')">delete</button>
+                        <button onclick="handleUpdate('<%=task.id%>')">Edit</button>
                     </div>
                 <% }); %>
             </ul>
@@ -18,3 +20,19 @@
         <% } %>
     </main>
 </body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.7/axios.min.js" integrity="sha512-NQfB/bDaB8kaSXF8E77JjhHG5PM6XVRxvHzkZiwl3ddWCEPBa23T76MuWSwAJdMGJnmQqM0VeY9kFszsrBEFrQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+    const url='http://localhost:2345'
+    function handleDelete(val){
+        axios.delete(`${url}/task/deleteTask/${val}`).then((res)=>{
+            alert(res.data)
+            window.location.reload()
+        }).catch((err)=>{
+            console.log(err)
+        })
+
+    }
+    function handleUpdate(val){
+
+    }
+</script>
